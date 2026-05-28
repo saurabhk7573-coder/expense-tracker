@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Expense Tracker</h1>
+        <p>Track your money easily in one place</p>
+      </header>
+
+      <div class="history-card" id="history-card">
+        <button
+          class="history-header"
+          id="history-toggle"
+          onclick="toggleHistory(event)"
+        >
+          <div>
+            <div class="history-title">Transaction History</div>
+            <div class="history-count" id="history-count">
+              No transactions yet
+            </div>
+            <div class="history-last" id="history-last">
+              Add a transaction from above.
+            </div>
+          </div>
+          <span class="history-action" id="history-action">View</span>
+        </button>
+        <div class="history-list" id="history-list"></div>
+      </div>
+
+      <div class="balance-card">
+        <div class="balance-label">Total Balance</div>
+        <div class="balance-amount zero" id="balance">₹0.00</div>
+      </div>
+
+      <div class="summary">
+        <div class="summary-box">
+          <div class="summary-icon income-icon">📈</div>
+          <div class="summary-info">
+            <label>Income</label>
+            <span class="inc" id="total-income">₹0.00</span>
+          </div>
+        </div>
+        <div class="summary-box">
+          <div class="summary-icon expense-icon">📉</div>
+          <div class="summary-info">
+            <label>Expense</label>
+            <span class="exp" id="total-expense">₹0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-title">Add Transaction</div>
+
+        <div class="type-toggle">
+          <button
+            class="type-btn active-income"
+            id="btn-income"
+            onclick="setType('income')"
+          >
+            + Income
+          </button>
+          <button
+            class="type-btn"
+            id="btn-expense"
+            onclick="setType('expense')"
+          >
+            − Expense
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input
+            type="text"
+            id="desc"
+            placeholder="e.g. Freelance payment"
+            maxlength="40"
+          />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Amount (₹)</label>
+            <input
+              type="number"
+              id="amount"
+              placeholder="0.00"
+              min="0.01"
+              step="0.01"
+            />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="category">
+              <option value="General">General</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Salary">Salary</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="error-msg" id="error-msg">
+          ⚠ Please fill in description and a valid amount.
+        </div>
+
+        <button class="add-btn" onclick="addTransaction()">
+          Add Transaction
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
